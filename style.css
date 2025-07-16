@@ -1,5 +1,6 @@
-@charset UTF-8;
+@charset "UTF-8";
 
+/* --- 1. Definição de Fontes Personalizadas --- */
 @font-face {
     font-family: "fonte-principal";
     src: url(fontes/fonte-principal.ttf) format('opentype');
@@ -14,54 +15,212 @@
     font-style: normal;
 }
 
-
-:root{
-    ---fonte1: Verdana, Geneva, Tahoma, sans-serif;
-    --fonte2: fonte-principal;
-    --fonte3: fonte-texto;
+/* --- 2. Variáveis CSS (Root) --- */
+:root {
+    /* Corrigido o nome da variável: --fonte1 ao invés de ---fonte1 */
+    --fonte1: Verdana, Geneva, Tahoma, sans-serif;
+    /* Adicionado fallback genérico para fontes personalizadas caso o arquivo não carregue */
+    --fonte2: 'fonte-principal', cursive;
+    --fonte3: 'fonte-texto', sans-serif;
     --cor-preto: #000000;
     --cor-verde: #52BF34;
-    --cor-vermelho:#DA2B3A;
+    --cor-vermelho: #DA2B3A; /* Vermelho das Meninas Super Poderosas */
     --cor-azul: #36AEE3;
     --cor-amarelo: #FCEA60;
-
-    
+    --cor-branco: #ffffff;
+    --cor-cinza-escuro: #333;
 }
 
+/* --- 3. Reset Básico para Todos os Elementos --- */
 * {
-    margin: 0px;
-    padding: 0px;
-    font-size: 1em;
-    
+    margin: 0;
+    padding: 0;
+    /* Essencial: Inclui padding e borda na largura/altura total do elemento */
+    box-sizing: border-box;
+    /* Remover font-size: 1em; daqui, pois pode atrapalhar o escalonamento */
 }
 
+/* --- 4. Estilos Globais para o Corpo da Página --- */
+body {
+    font-family: var(--fonte1); /* Fonte padrão para o corpo */
+    line-height: 1.6;
+    color: var(--cor-cinza-escuro);
+    background-color: #f0f0f0; /* Fundo geral da página */
+    min-height: 100vh; /* Garante que o body ocupe no mínimo a altura da tela */
+    display: flex; /* Transforma o body em flex container */
+    flex-direction: column; /* Organiza os filhos (header, main, footer) em coluna */
+}
+
+/* --- 5. Estilos Consolidados do Header --- */
 header {
-    background-color: 
-}
-
-header > h1 {
-    font-family: var(--fonte2);
-    font-size: 10vh;
     text-align: center;
-    padding: 90px;
-    
-    padding-bottom: 90px;
-    background-color: var(--cor-vermelho);
-    box-shadow: 10px, 10px;
-    
-   
+    background-color: var(--cor-vermelho); /* Cor de fundo do header */
+    color: var(--cor-branco); /* Cor do texto no header */
+    padding: 40px 20px 20px 20px; /* Padding ajustado: Top, Right, Bottom, Left. Menor padding-bottom! */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o header */
+    margin-bottom: 0; /* REMOVIDO OU ZERADO: Garante que não haja margem extra empurrando o main para baixo */
 }
 
-header > h2 {
-    font-family: var(--fonte3);
-    text-decoration: double;
-    font-size: 5vh;
-    text-align: center;
-    color: crimson;
+/* Estilo para o H1 dentro do Header */
+header h1 {
+    font-family: var(--fonte2); /* Sua fonte principal temática */
+    font-size: 4em; /* Tamanho do "The Powerpuff Girls" - ajustado para maior impacto */
+    margin-bottom: 5px; /* Espaço entre "The Powerpuff Girls" e "Valentina's Birthday Blast-Off!" */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+    padding: 0; /* REMOVIDO o padding excessivo que estava no h1 */
+    background-color: transparent; /* Remove a cor de fundo duplicada que estava no h1 */
+    box-shadow: none; /* Remove a sombra duplicada que estava no h1 */
 }
 
+/* Estilo para o H2 dentro do Header */
+header h2 {
+    font-family: var(--fonte1); /* Sua fonte de texto temática */
+    /* text-decoration: double; - "double" não é valor válido para text-decoration-line, remova se não for underline */
+    font-size: 2.2em; /* Tamanho do "Valentina's Birthday Blast-Off!" */
+    color: white; /* Cor do texto "Valentina's Birthday Blast-Off!" */
+    margin-top: 0; /* Remove margem superior padrão do h2 */
+    margin-bottom: 30px; /* **AJUSTE AQUI:** Espaço abaixo do h2 para o conteúdo do main. Reduza se quiser mais próximo. */
+}
 
+header h3 {
+    font-family: var(--fonte1); /* Sua fonte de texto temática */
+    /* text-decoration: double; - "double" não é valor válido para text-decoration-line, remova se não for underline */
+    font-size: 1.5em; /* Tamanho do "Valentina's Birthday Blast-Off!" */
+    color: white; /* Cor do texto "Valentina's Birthday Blast-Off!" */
+    margin-top: 0; /* Remove margem superior padrão do h2 */
+    margin-bottom: 0px; /* **AJUSTE AQUI:** Espaço abaixo do h2 para o conteúdo do main. Reduza se quiser mais próximo. */
+
+
+}
+
+/* --- 6. Estilo para o Contêiner Principal (seu elemento <main>) --- */
 main {
-    background-color: 
+    display: flex; /* Flexbox para alinhar os itens (personagens) lado a lado */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: flex-end; /* Alinha a base das imagens (pés na mesma linha) */
+    gap: 50px; /* Espaço entre os blocos das personagens */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+
+    padding: 40px 20px; /* Padding interno do main, para dar respiro ao conteúdo */
+    background-color: #e0f2f7; /* Fundo suave para a área principal, ajuste se quiser */
+    flex-grow: 1; /* Permite que o main cresça e ocupe o espaço vertical disponível */
 }
 
+/* --- 7. Estilo para Cada Bloco de Personagem (divs com IDs) --- */
+/* Como você não quer mudar o HTML, usamos os IDs e o seletor main > div */
+main > div {
+    text-align: center;
+    max-width: 250px; /* **AUMENTADO:** Largura MÁXIMA de cada bloco (ajuste para o tamanho desejado) */
+    flex-shrink: 0; /* Impede que o item encolha além do seu max-width em telas apertadas */
+
+    padding: 25px; /* Padding interno de cada bloco */
+    border-radius: 20px; /* Bordas arredondadas */
+    background-color: var(--cor-branco); /* Fundo branco para cada card */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Sombra para o efeito 3D */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animação suave para hover */
+
+    /* Faz cada div ser um flex container para empilhar imagem e texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer; /* Indica que é clicável */
+}
+
+/* --- 8. Efeito de Hover para Cada Bloco de Personagem --- */
+main > div:hover {
+    transform: translateY(-15px); /* Levanta o bloco no hover */
+    box-shadow: 0 16px 30px rgba(0,0,0,0.35); /* Sombra mais destacada no hover */
+}
+
+/* --- 9. Estilo para as Imagens (dentro de <picture> e <img>) --- */
+/* Aponta para a imagem dentro da tag <picture> dentro do div */
+main > div > picture > img {
+    max-width: 180px; /* **AUMENTADO:** Largura MÁXIMA da imagem (AJUSTE ESTE VALOR!) */
+    height: auto; /* FUNDAMENTAL: Mantém a proporção da imagem */
+    display: block; /* Garante o comportamento de bloco */
+    margin: 0 auto 15px auto; /* Centraliza a imagem e adiciona espaço abaixo */
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.3)); /* Sombra para a imagem */
+}
+
+/* --- 10. Estilo para o Texto do Link (O recadinho fofo, etc.) --- */
+main > div p a {
+    font-family: var(--fonte3); /* Usando a variável de fonte temática */
+    font-size: 1.3em; /* Tamanho da fonte do link */
+    color: var(--cor-cinza-escuro); /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    font-weight: bold;
+    display: inline-block; /* Permite espaçamento vertical */
+    margin-top: 5px; /* Pequeno espaço entre a imagem e o link */
+}
+
+/* --- 11. Efeito de Hover para o Link --- */
+main > div p a:hover {
+    color: var(--cor-vermelho); /* Cor vermelha no hover */
+}
+
+/* --- 12. Estilo para o Rodapé (Footer) --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+    margin-top: auto; /* Empurra o rodapé para o final da página se o conteúdo for curto */
+}
+
+
+
+footer:hover {
+    color: white;
+}
+
+
+/* --- 13. Responsividade: Ajustes para Telas Menores --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3em; /* Tamanho do h1 para tablets */
+    }
+    header h2 {
+        font-size: 1.8em; /* Tamanho do h2 para tablets */
+        margin-bottom: 20px; /* Ajuste para telas menores */
+    }
+    main {
+        flex-direction: column; /* Empilha os itens em telas menores */
+        align-items: center; /* Centraliza os itens empilhados */
+        gap: 30px; /* Espaço entre eles no modo coluna */
+        padding: 20px 15px; /* Ajusta o padding para telas menores */
+    }
+    main > div {
+        max-width: 180px; /* Largura do bloco ajustada para mobile */
+        padding: 15px;
+    }
+    main > div > picture > img {
+        max-width: 120px; /* Largura da imagem ajustada para mobile */
+    }
+    main > div p a {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.2em; /* Tamanho do h1 para celulares pequenos */
+    }
+    header h2 {
+        font-size: 1.4em; /* Tamanho do h2 para celulares pequenos */
+        margin-bottom: 10px; /* Menos espaço para celulares pequenos */
+    }
+    main {
+        padding: 15px 10px;
+        gap: 20px;
+    }
+    main > div {
+        max-width: 150px;
+        padding: 12px;
+    }
+    main > div > picture > img {
+        max-width: 100px;
+    }
+    main > div p a {
+        font-size: 1em;
+    }
+}
