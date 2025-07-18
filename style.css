@@ -95,17 +95,29 @@ header h3 {
 
 /* --- 6. Estilo para o Contêiner Principal (seu elemento <main>) --- */
 main {
-    display: flex; /* Flexbox para alinhar os itens (personagens) lado a lado */
-    justify-content: center; /* Centraliza os itens horizontalmente */
-    align-items: flex-end; /* Alinha a base das imagens (pés na mesma linha) */
-    gap: 50px; /* Espaço entre os blocos das personagens */
-    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 50px;
+    flex-wrap: wrap;
 
-    padding: 40px 20px; /* Padding interno do main, para dar respiro ao conteúdo */
-    background-color: #093643; /* Fundo suave para a área principal, ajuste se quiser */
-    flex-grow: 1; /* Permite que o main cresça e ocupe o espaço vertical disponível */
+    padding: 98px 29px;
+    
+    /* PROPRIEDADES PARA A IMAGEM DE FUNDO */
+    background-image: url(imagens/sem-fundo/download.gif);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* Ou 'fixed' se preferir o efeito de paralaxe */
+    
+    /* CRUCIAL: REMOVER OU DEFINIR COMO "transparent" PARA NÃO MOSTRAR NENHUMA COR SÓLIDA POR BAIXO */
+    background-color: transparent; /* GARANTE QUE NENHUMA COR SÓLIDA APAREÇA POR BAIXO DA IMAGEM */
+    /* Você também pode simplesmente COMENTAR a linha 'background-color' se não quiser nenhum fallback */
+    
+    min-height: 100vh;
+    box-sizing: border-box;
+    flex-grow: 1;
 }
-
 /* --- 7. Estilo para Cada Bloco de Personagem (divs com IDs) --- */
 /* Como você não quer mudar o HTML, usamos os IDs e o seletor main > div */
 main > div {
@@ -118,6 +130,7 @@ main > div {
     background-color: var(--cor-branco); /* Fundo branco para cada card */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.118); /* Sombra para o efeito 3D */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animação suave para hover */
+    padding-top: 10px;
 
     /* Faz cada div ser um flex container para empilhar imagem e texto */
     display: flex;
