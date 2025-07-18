@@ -8,8 +8,9 @@
 
     <style>
 
-        head {
-            margin: 10px;
+        header > h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5em;
         }
         main > article > p {
             background-color: white;
@@ -51,7 +52,42 @@
                padding-right:olx;
             }
 
+            /* Estilo para o parágrafo que contém o botão, para centralizá-lo */
+/* Este seletor assume que o botão <a> está diretamente dentro de um <p> */
+main > article > p:last-of-type { /* Seleciona o ÚLTIMO parágrafo do artigo, que contém o botão */
+    text-align: center; /* CENTRALIZA o conteúdo inline/inline-block, incluindo seu botão */
+    margin-bottom: 0; /* Remove a margem extra se ela não for necessária no último parágrafo */
+}
 
+/* Estilo para todos os links 'a' na página, transformando-os em botões */
+a {
+    display: inline-block; /* Crucial para que padding, margens e dimensões funcionem como em um bloco */
+    color: white; /* Cor do texto do botão */
+    background-color: #36AEE3; /* Seu azul vibrante para o fundo do botão */
+    padding: 12px 25px; /* Espaçamento interno (vertical e horizontal) */
+    border-radius: 30px; /* Cantos bem arredondados, formato de "pílula" */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    font-weight: bold; /* Deixa o texto do botão em negrito */
+    font-size: 1.2em; /* Tamanho da fonte do botão */
+    margin-top: 25px; /* Espaço acima do botão para separá-lo do conteúdo anterior */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para dar profundidade */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transição suave para efeitos de hover */
+    font-family: 'Bangers', cursive; /* Usei a fonte Bangers para o texto do botão, ou var(--fonte2) */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+
+    /* Remova `margin: center;` aqui pois não é válido para centralização direta em inline-block */
+}
+
+/* Efeito de hover para os botões (links 'a') */
+a:hover {
+    background-color: #FFD700; /* Muda a cor do fundo para AMARELO vibrante no hover */
+    color: black; /* A cor do texto pode mudar para preto para contrastar com o amarelo */
+    text-decoration: none; /* Garante que NÃO sublinhe no hover */
+    transform: translateY(-3px); /* Faz o botão "levantar" um pouco no hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada no hover */
+}
+
+  
     </style>
 </head>
 <body>
@@ -69,24 +105,31 @@
        
        <article><p>
         Super amiguinho(a)! Sou a Lindinha e estou tão feliz em te convidar! 💖
-        A Valentina vai ter uma festa de aniversário cheia de carinho, risadas e muitos, muitos doces! <br>
+        A <strong>Valentina</strong> vai ter uma festa de aniversário cheia de carinho, risadas e muitos, muitos doces! <br>
 
-        💖 Que Fofura! Você Está Convidado(a)! 💖 <br>
+        <br>💖 Que Fofura! Você Está Convidado(a)! 💖 <br>
 
-        Detalhes do Nosso Doce Encontro:
-        <br>
-        - Hora de Abrir os Olhinhos: Das [Hora Início]h às [Hora Fim]h<br>
-        - Nosso Doce Encontro Será Em: [Endereço Completo do Local da Festa]<br>
+        <strong>
+            <br>Detalhes do Nosso Doce Encontro:
+            <br>
+            - Dia da festa: 15/11<br>
+            - Hora de Abrir os Olhinhos: Das 13h às 17h<br>
+            - Nosso Doce Encontro Será Em: Rua: Leopoldo Marista nº 345<br>
+        </strong>
 
-        Vai ser tudo lindo! Mal posso esperar pra te abraçar! 😊 <br>
+        <br>Vai ser tudo lindo! Mal posso esperar pra te abraçar! 😊 <br>
 
-        ✨ O Pedido Mais Fofo da Lindinha ✨ <br>
-        Para deixar a festa ainda mais brilhante e colorida, que tal virmos todas juntas?
+        <br>✨ O Pedido Mais Fofo da Lindinha ✨ <br>
+        <br>Para deixar a festa ainda mais brilhante e colorida, que tal virmos todas juntas?<br>
         Escolha sua fantasia de Florzinha, Docinho ou Lindinha e venha celebrar a alegria conosco! Vai ser a festa mais amorosa de todas! ❤️💚💙
 
         Me Diz que Você Vem, Por Favor!
-        Me avisa se você pode vir até o dia [Data Limite Confirmação], tá bom? <br>
-        (Botão: Confirmar Presença (Com um Abraço Virtual!)) <br>
+        Me avisa se você pode vir até o dia 24/09, tá bom? <br>
+         <a href="confirmacao.html" target="_blank">Confirmar Presença</a> 
+         <br>
+
+         <br>
+         <a href="index.html" target="_blank">Página Inicial</a>  <br>
        </p></article>
 
         
